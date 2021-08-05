@@ -1,0 +1,17 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 44.6%;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  margin-right: 68px;
+
+  &:last-child {
+     margin-right: 0;
+   }
+}

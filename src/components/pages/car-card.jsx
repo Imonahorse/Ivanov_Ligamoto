@@ -1,9 +1,10 @@
 import React from 'react';
+import Header from './../header/header';
 
 function CarCard() {
   return (
     <div className="wrapper">
-      <p>Тут будет страница</p>
+      <Header />
     </div>
   );
 }
