@@ -1,0 +1,19 @@
+@import 'global';
+@import 'variables';
+@import 'fonts';
+
+@import-normalize;
+
+body {
+  min-width: 1175px;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+
+  font-family: var(--default-font);
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--default-color);
+}

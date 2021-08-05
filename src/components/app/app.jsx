@@ -1,7 +1,10 @@
 import React from 'react';
+import CarCard from '../pages/car-card';
 
 function App() {
-  return <p>Hello, world!</p>;
+  return (
+    <CarCard />
+  );
 }
 
 export default App;
