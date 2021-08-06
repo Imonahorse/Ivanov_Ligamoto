@@ -10,6 +10,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 600;
   color: var(--default-color);
+}
+
+.item {
+  margin-right: 68px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }

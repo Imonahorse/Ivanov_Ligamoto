@@ -1,0 +1,21 @@
+.tab {
+  min-width: 195px;
+  padding: 11px 14px 10px 14px;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: center;
+  border: 1px solid var(--gray-3);
+  background-color: inherit;
+  color: var(--default-color);
+  cursor: pointer;
+
+  &Active {
+    color: var(--white);
+    background-color: var(--red);
+    border: none;
+  }
+}
+
+.inner {
+  padding: 0 0 140px 6px;
+}

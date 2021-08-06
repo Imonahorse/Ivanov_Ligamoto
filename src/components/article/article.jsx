@@ -13,7 +13,7 @@ function Article() {
 
   return (
     <section className={articleContainer}>
-      <h2 className='visually-hidden'>Информация о автомобиле</h2>
+      <h2 className='visually-hidden'>Основная информация</h2>
       <article className={styles.article}>
         <div className={styles.left}>
           <div className={styles.promo}>

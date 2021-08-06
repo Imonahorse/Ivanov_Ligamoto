@@ -19,7 +19,7 @@ function Header() {
       <div className={headerContainer}>
         <nav className={styles.nav}>
           <Logo/>
-          <SiteMenu buttons={headerButtons}/>
+          <SiteMenu buttons={headerButtons} className={styles.item}/>
         </nav>
       </div>
     </header>
