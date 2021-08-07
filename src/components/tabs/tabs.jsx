@@ -16,13 +16,13 @@ function Tabs() {
       <h2 className='visually-hidden'>Дополнительная информация</h2>
       <TabBar>
         <TabBarItem label={tabs[0]}>
-          <Features/>
+          <Contacts/>
         </TabBarItem>
         <TabBarItem label={tabs[1]}>
           <Comments/>
         </TabBarItem>
         <TabBarItem label={tabs[2]}>
-          <Contacts/>
+          <Features/>
         </TabBarItem>
       </TabBar>
     </section>

@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './contacts.module.scss';
-import map from './../../img/map.png';
+// import map from './../../img/map.png';
 import cn from 'classnames';
+
+import YandexMap from '../map/yandex-map';
 
 function Contacts() {
   return (
@@ -26,7 +28,8 @@ function Contacts() {
         </li>
       </ul>
       <div className={styles.picture}>
-        <img src={map} alt="Как добраться"/>
+        <YandexMap />
+        {/*<img src={map} alt="Как добраться"/>*/}
       </div>
     </div>
   );
