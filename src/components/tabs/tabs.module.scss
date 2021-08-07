@@ -17,5 +17,13 @@
 }
 
 .inner {
-  padding: 0 0 140px 6px;
+  padding-left: 6px;
+}
+
+.list {
+  display: flex;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

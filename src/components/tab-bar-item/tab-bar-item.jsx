@@ -1,18 +1,29 @@
 import React from 'react';
-// import classNames from 'classnames';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
-function TabBarItem({children}) {
-
-  // const classes = classNames(
-  //   'tab-bar-item',
-  //   { active: activeTab === label },
-  // );
+function TabBarItem({children, label, activeTab, ...attrs}){
+  const classes = classNames(
+    'tab-bar-item',
+    {active: activeTab === label},
+  );
 
   return (
-    <div >
+    <div className={classes} {...attrs}>
       {children}
     </div>
   );
+}
+
+TabBarItem.propTypes = {
+  label: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  activeTab: PropTypes.string,
+};
+
+TabBarItem.defaultProps = {
+  children: null,
+  activeTab: '',
 };
 
 export default TabBarItem;

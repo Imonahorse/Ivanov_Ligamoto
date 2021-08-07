@@ -14,6 +14,7 @@ const features = {
 function Features() {
   return (
     <dl className={styles.list}>
+      <h3 className='visually-hidden'>Характеристики автомобиля</h3>
       {
         Object.entries(features).map(([dt, dd]) => (
           <div className={styles.item} key={dt}>
