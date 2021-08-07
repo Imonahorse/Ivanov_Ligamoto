@@ -1,22 +1,22 @@
 import React, {useState} from 'react';
-import TabBarNav from './../tab-bar-nav/tab-bar-nav'
+import TabBarNav from './../tab-bar-nav/tab-bar-nav';
 import PropTypes from 'prop-types';
 
-function TabBar({children, className}) {
+function TabBar({children}) {
   const [activeTab, setActiveTab] = useState(null);
 
   const getChildrenLabels = (items) => items.map(({props}) => props.label);
+
+  useState(() => {
+    const initialTab = getChildrenLabels(children)[0];
+    setActiveTab(initialTab);
+  });
 
   const changeActiveTab = (tab) => {
     if (tab !== activeTab) {
       setActiveTab(tab);
     }
   };
-
-  useState(() => {
-    const initialTab = getChildrenLabels(children)[0];
-    setActiveTab(initialTab);
-  });
 
   return (
     <div>
@@ -26,14 +26,14 @@ function TabBar({children, className}) {
             <TabBarNav
               key={navLabel}
               navLabel={navLabel}
-              // className={classNames({active: activeTab === navLabel})}
+              activeTab={activeTab}
               onChangeActiveTab={changeActiveTab}
             />
           ))
         }
       </div>
       <div>
-        {React.Children.map(children, child => React.cloneElement(child, {activeTab}))}
+        {children.map((child) => child.props.label === activeTab && child)}
       </div>
     </div>
   );
@@ -41,14 +41,12 @@ function TabBar({children, className}) {
 
 TabBar.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string,
-  vertical: PropTypes.bool,
+  label: PropTypes.string,
 };
 
 TabBar.defaultProps = {
   children: null,
   className: '',
-  vertical: false,
 };
 
 export default TabBar;
