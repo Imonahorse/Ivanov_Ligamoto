@@ -2,9 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-function TabBarItem({children, label, activeTab, ...attrs}){
+function TabItem({children, label, activeTab, ...attrs}){
   const classes = classNames(
-    'tab-bar-item',
+    'tab-item',
     {active: activeTab === label},
   );
 
@@ -15,15 +15,15 @@ function TabBarItem({children, label, activeTab, ...attrs}){
   );
 }
 
-TabBarItem.propTypes = {
+TabItem.propTypes = {
   label: PropTypes.string.isRequired,
   children: PropTypes.node,
   activeTab: PropTypes.string,
 };
 
-TabBarItem.defaultProps = {
+TabItem.defaultProps = {
   children: null,
   activeTab: '',
 };
 
-export default TabBarItem;
+export default TabItem;

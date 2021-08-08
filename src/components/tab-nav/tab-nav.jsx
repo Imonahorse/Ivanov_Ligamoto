@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './tab-bar-nav.module.scss';
+import styles from './tab-nav.module.scss';
 import cn from 'classnames';
 
-function TabBarNav({ navLabel, activeTab, onChangeActiveTab }) {
+function TabNav({ navLabel, activeTab, onChangeActiveTab }) {
 
   return (
     <button
@@ -16,15 +16,15 @@ function TabBarNav({ navLabel, activeTab, onChangeActiveTab }) {
   );
 }
 
-TabBarNav.propTypes = {
+TabNav.propTypes = {
   navLabel: PropTypes.string,
   activeTab: PropTypes.string,
   onChangeActiveTab: PropTypes.func,
 };
 
-TabBarNav.defaultProps = {
+TabNav.defaultProps = {
   navLabel: 'Tab',
   onChangeActiveTab: () => {},
 };
 
-export default TabBarNav;
+export default TabNav;

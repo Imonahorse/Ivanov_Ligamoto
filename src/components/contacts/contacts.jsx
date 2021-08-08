@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './contacts.module.scss';
-// import map from './../../img/map.png';
 import cn from 'classnames';
-
 import YandexMap from '../map/yandex-map';
 
 function Contacts() {
@@ -29,7 +27,6 @@ function Contacts() {
       </ul>
       <div className={styles.picture}>
         <YandexMap />
-        {/*<img src={map} alt="Как добраться"/>*/}
       </div>
     </div>
   );

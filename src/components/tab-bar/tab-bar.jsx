@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import TabBarNav from './../tab-bar-nav/tab-bar-nav';
+import TabNav from '../tab-nav/tab-nav';
 import PropTypes from 'prop-types';
 
 function TabBar({children}) {
@@ -23,7 +23,7 @@ function TabBar({children}) {
       <div>
         {
           getChildrenLabels(children).map((navLabel) => (
-            <TabBarNav
+            <TabNav
               key={navLabel}
               navLabel={navLabel}
               activeTab={activeTab}

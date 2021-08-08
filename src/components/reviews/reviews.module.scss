@@ -10,18 +10,9 @@
 }
 
 .button {
+  z-index: 10;
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 16.5px 20px;
-
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 19px;
-  text-align: center;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border: 1px solid var(--red);
-  color: var(--red);
-  background-color: transparent;
+  top: 30px;
+  right: 2px;
+  padding: 16px 18px;
 }

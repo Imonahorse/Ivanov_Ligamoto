@@ -9,3 +9,9 @@
   list-style: none;
   font-weight: 600;
 }
+
+.item {
+  &:hover {
+    opacity: 0.6;
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './tabs.module.scss';
 import cn from 'classnames';
 import TabBar from '../tab-bar/tab-bar';
-import TabBarItem from '../tab-bar-item/tab-bar-item';
+import TabItem from '../tab-item/tab-item';
 import Features from '../features/features';
 import Reviews from '../reviews/reviews';
 import Contacts from './../contacts/contacts';
@@ -14,15 +14,15 @@ function Tabs() {
     <section className={sectionClass}>
       <h2 className='visually-hidden'>Дополнительная информация</h2>
       <TabBar>
-        <TabBarItem label={'Характеристики'}>
+        <TabItem label={'Характеристики'}>
           <Features/>
-        </TabBarItem>
-        <TabBarItem label={'Отзывы'}>
+        </TabItem>
+        <TabItem label={'Отзывы'}>
           <Reviews/>
-        </TabBarItem>
-        <TabBarItem label={'Контакты'}>
+        </TabItem>
+        <TabItem label={'Контакты'}>
           <Contacts/>
-        </TabBarItem>
+        </TabItem>
       </TabBar>
     </section>
   );
