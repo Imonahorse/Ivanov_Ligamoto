@@ -19,7 +19,7 @@ function Features() {
         Object.entries(features).map(([dt, dd]) => (
           <div className={styles.item} key={dt}>
             <dt>{dt}</dt>
-            <dd>{dd}</dd>
+            <dd className={styles.description}>{dd}</dd>
           </div>
         ))
       }

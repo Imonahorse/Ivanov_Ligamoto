@@ -29,6 +29,12 @@ a {
 }
 
 .container {
-  max-width: 1175px;
+  max-width: 1215px;
   margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  @media(max-width: 1214px) {
+      max-width: 100vw;
+  }
 }

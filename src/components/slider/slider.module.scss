@@ -1,5 +1,13 @@
 .promo {
   position: relative;
+
+  img {
+    width: 100%;
+  }
+
+  @media(max-width: 940px) {
+    width: 726px;
+  }
 }
 
 .label {
@@ -34,4 +42,11 @@
   justify-content: space-between;
 
   padding-top: 40px;
+
+  @media(max-width: 940px) {
+    padding-left: 64px;
+    padding-right: 64px;
+    flex-wrap: wrap;
+    padding-bottom: 60px;
+  }
 }
