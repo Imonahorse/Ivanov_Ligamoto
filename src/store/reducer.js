@@ -1,8 +1,7 @@
-import React from 'react';
-import styles from './comments.module.scss';
-import Comment from '../comment/comment';
+import {createReducer} from '@reduxjs/toolkit';
+import addReview from './actions';
 
-const comments = [
+const data = [
   {
     id: '1',
     name: 'Борис Иванов',
@@ -21,18 +20,16 @@ const comments = [
   },
 ];
 
-function Comments() {
-  return (
-    <div className={styles.wrapper}>
-      <h3 className='visually-hidden'>Комментарии</h3>
-      <button type='button' className={styles.button}>Оставить отзыв</button>
-      <ul className={styles.list}>
-        {
-          comments.map((comment) => <Comment comment={comment} key={comment.id}/>)
-        }
-      </ul>
-    </div>
-  );
-}
+const initialState = {
+  reviews: data,
+};
 
-export default Comments;
+const reducer = createReducer(initialState, (builder) => {
+  builder
+    .addCase(addReview, (state, action) => {
+      state.reviews.push(action.payload);
+    });
+});
+
+export default reducer;
+

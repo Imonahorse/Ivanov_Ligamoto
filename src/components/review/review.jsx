@@ -1,11 +1,14 @@
-import styles from '../comment/comment.module.scss';
+import styles from './review.module.scss';
 import cn from 'classnames';
 import ReactStars from 'react-rating-stars-component';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Comment({comment}) {
-  const {id, name, benefits, flaws, total} = comment;
+const RATING_SIZE = 25;
+const AVERAGE_RATING = 3;
+
+function Review({review}) {
+  const {id, name, benefits, flaws, total, rating} = review;
   return (
     <li className={styles.inner}>
       <p className={styles.user} id={id}>{name}</p>
@@ -24,13 +27,13 @@ function Comment({comment}) {
       <div className={styles.rating}>
         <ReactStars
           classNames={styles.stars}
-          size={25}
-          value={3}
+          size={RATING_SIZE}
+          value={rating}
           edit={false}
           activeColor='#D12136'
           isHalf
         />
-        <span>Советует</span>
+        <span>{rating >= AVERAGE_RATING ? 'Советует' : 'Не советует'}</span>
       </div>
       <div className={styles.answer}>
         <span className={styles.time}>1 минуту назад</span>
@@ -40,14 +43,15 @@ function Comment({comment}) {
   );
 }
 
-Comment.propTypes = {
-  comment: PropTypes.shape({
+Review.propTypes = {
+  review: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     benefits: PropTypes.string.isRequired,
     flaws: PropTypes.string.isRequired,
     total: PropTypes.string.isRequired,
+    rating: PropTypes.string.isRequired,
   }),
 };
 
-export default Comment;
+export default Review;

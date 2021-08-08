@@ -1,0 +1,157 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+
+  background-color: rgba(0, 0, 0, 0.25);
+
+  &Open {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+.inner {
+  padding: 30px 35px 35px 35px;
+  transform: scale(0.5);
+  transition: 0.5s all;
+
+  background-color: var(--gray);
+
+  &Open {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.header {
+  position: relative;
+  margin-bottom: 52px;
+}
+
+.close {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -10px;
+  right: -7px;
+
+  border: none;
+  background-color: transparent;
+  background-image: url('./../../img/close.svg');
+  background-repeat: no-repeat;
+}
+
+.title {
+  margin: 0;
+  text-align: center;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-template-rows: repeat( 3, 50px);
+  grid-column-gap: 27px;
+  grid-row-gap: 16px;
+  margin: 0 0 36px 0;
+  border: 0;
+}
+
+.label {
+  min-width: 300px;
+
+  &Name {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+
+  &Good {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+
+  &Bad {
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
+
+  &Textarea {
+    grid-column: 2/3;
+    grid-row: 2/4;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 16px 25px;
+  border: 1px solid rgba(72, 73, 77, 0.2);
+
+
+
+  &:focus {
+    border: none;
+    outline: 1px solid var(--red);
+  }
+}
+
+.textarea {
+  width: 100%;
+  padding: 15px 25px 24px 25px;
+  border: 1px solid rgba(72, 73, 77, 0.2);
+
+  &:focus {
+    border: none;
+    outline: 1px solid var(--red);
+  }
+}
+
+.span {
+  display: block;
+  margin-bottom: 4px;
+
+  font-size: 14px;
+  line-height: 19px;
+  color: var(--red-2);
+}
+
+.stars {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+}
+
+.rating {
+  margin: 0 15px 0 0;
+
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 20px;
+  color: var(--black);
+}
+
+.constellation {
+  letter-spacing: 3.3px;
+}
+
+.submit {
+  display: block;
+  margin: 0 auto;
+  padding: 16px 21px;
+  background-color: var(--red);
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--white);
+}

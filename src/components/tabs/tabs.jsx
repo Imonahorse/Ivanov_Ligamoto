@@ -4,10 +4,9 @@ import cn from 'classnames';
 import TabBar from '../tab-bar/tab-bar';
 import TabBarItem from '../tab-bar-item/tab-bar-item';
 import Features from '../features/features';
-import Comments from './../comments/comments';
+import Reviews from '../reviews/reviews';
 import Contacts from './../contacts/contacts';
 
-const tabs = ['Характеристики', 'Отзывы', 'Контакты'];
 const sectionClass = cn(styles.inner, 'container');
 
 function Tabs() {
@@ -15,14 +14,14 @@ function Tabs() {
     <section className={sectionClass}>
       <h2 className='visually-hidden'>Дополнительная информация</h2>
       <TabBar>
-        <TabBarItem label={tabs[0]}>
-          <Contacts/>
-        </TabBarItem>
-        <TabBarItem label={tabs[1]}>
-          <Comments/>
-        </TabBarItem>
-        <TabBarItem label={tabs[2]}>
+        <TabBarItem label={'Характеристики'}>
           <Features/>
+        </TabBarItem>
+        <TabBarItem label={'Отзывы'}>
+          <Reviews/>
+        </TabBarItem>
+        <TabBarItem label={'Контакты'}>
+          <Contacts/>
         </TabBarItem>
       </TabBar>
     </section>
