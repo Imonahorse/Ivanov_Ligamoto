@@ -6,8 +6,8 @@ const Default = {
   CENTER_LOCATION: [59.96755, 30.322802],
   MARKER_LOCATION: [59.968367, 30.31457],
   ZOOM: 14,
-  WIDTH: '431px',
-  HEIGHT: '271px',
+  WIDTH: '100%',
+  HEIGHT: '100%',
 };
 
 function YandexMap() {

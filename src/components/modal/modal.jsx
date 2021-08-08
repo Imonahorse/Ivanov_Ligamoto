@@ -5,6 +5,7 @@ import cn from 'classnames';
 import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
 import addReview from '../../store/actions';
+import Button from '../button/button';
 
 const Stars = {
   SIZE: 36,
@@ -65,6 +66,7 @@ function Modal({modalState, handleModalState}) {
         </div>
         <form action="#" onSubmit={handleSubmitClick}>
           <div className={styles.form}>
+            <span className={styles.inlay}>Пожалуйста, заполните поле</span>
             <label className={cn(styles.label, styles.labelName)}>
               <span className='visually-hidden'>Ваше имя</span>
               <input
@@ -73,6 +75,7 @@ function Modal({modalState, handleModalState}) {
                 type="text"
                 value={data.name}
                 onChange={handleInputClick}
+                placeholder='Имя'
               />
             </label>
             <label className={cn(styles.label, styles.labelGood)}>
@@ -83,6 +86,7 @@ function Modal({modalState, handleModalState}) {
                 type="text"
                 value={data.benefits}
                 onChange={handleInputClick}
+                placeholder='Достоинства'
               />
             </label>
             <label className={cn(styles.label, styles.labelBad)}>
@@ -115,13 +119,13 @@ function Modal({modalState, handleModalState}) {
                 className={styles.textarea}
                 name='total'
                 cols='20'
-                rows='5'
+                rows='4'
                 value={data.total}
                 onChange={handleInputClick}
               />
             </label>
           </div>
-          <button className={styles.submit} type='submit'>Оставить отзыв</button>
+          <Button className={styles.submit} type='submit'>Оставить отзыв</Button>
         </form>
       </div>
     </section>

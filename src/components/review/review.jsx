@@ -36,8 +36,8 @@ function Review({review}) {
         <span>{rating >= AVERAGE_RATING ? 'Советует' : 'Не советует'}</span>
       </div>
       <div className={styles.answer}>
-        <span className={styles.time}>1 минуту назад</span>
-        <button className={styles.reply}>Ответить</button>
+        <time dateTime={new Date()} className={styles.time}>1 минуту назад</time>
+        <button className={styles.reply} type='button'>Ответить</button>
       </div>
     </li>
   );
@@ -45,7 +45,7 @@ function Review({review}) {
 
 Review.propTypes = {
   review: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     benefits: PropTypes.string.isRequired,
     flaws: PropTypes.string.isRequired,

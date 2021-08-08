@@ -18,6 +18,12 @@
   &:hover {
     background-color: var(--red-3);
   }
+
+  &:disabled {
+    background-color: var(--gray-4);
+    color: var(--white);
+    cursor: auto;
+  }
 }
 
 .white {
