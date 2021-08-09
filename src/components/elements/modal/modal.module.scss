@@ -10,6 +10,11 @@
   opacity: 1;
 }
 
+.open {
+  overflow: hidden;
+  padding-right: 17px;
+}
+
 .inner {
   position: absolute;
   top: 50%;
@@ -196,7 +201,7 @@
 
   &_comment {
     position: absolute;
-    top:-20px;
+    top: -20px;
     right: 100px;
   }
 }

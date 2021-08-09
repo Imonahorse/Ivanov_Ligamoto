@@ -46,6 +46,12 @@ function Modal({handleModalState}) {
     localStorage.setItem('form', JSON.stringify(form));
   }, [form]);
 
+  useEffect(() => {
+    document.body.classList.add(styles.open);
+
+    return (() => document.body.classList.remove(styles.open));
+  }, []);
+
   const handleEscClick = (evt) => {
     if (evt.key === 'ESC' || evt.key === 'Escape') {
       handleModalState();
