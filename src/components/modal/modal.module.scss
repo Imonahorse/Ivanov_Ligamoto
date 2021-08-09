@@ -5,16 +5,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.5s;
 
   background-color: rgba(0, 0, 0, 0.25);
-
-  &Open {
-    opacity: 1;
-    pointer-events: all;
-  }
+  opacity: 1;
 }
 
 .inner {
@@ -22,15 +15,10 @@
   top: 50%;
   left: 50%;
   padding: 38px 35px 35px 35px;
-  transform: scale(0.5) translate(-50%, -51%);
-  transition: 0.5s all;
+  transform: translate(-50%, -50%);
 
   background-color: var(--gray);
-
-  &Open {
-    opacity: 1;
-    transform: scale(1) translate(-50%, -51%);
-  }
+  opacity: 1;
 }
 
 .header {
@@ -131,9 +119,12 @@
     color: var(--default-color);
   }
 
-  &:focus {
-    border: none;
-    outline: 1px solid var(--red);
+  &:hover {
+    border: 1px solid var(--default-color);
+  }
+
+  &Required {
+    border: 1px solid var(--red);
   }
 }
 
@@ -150,9 +141,12 @@
     color: var(--default-color);
   }
 
-  &:focus {
-    border: none;
-    outline: 1px solid var(--red);
+  &:hover {
+    border: 1px solid var(--default-color);
+  }
+
+  &Required {
+    border: 1px solid var(--red);
   }
 }
 
@@ -189,12 +183,20 @@
   margin: 0 auto;
 }
 
-.inlay {
-  position: absolute;
-  top: -21px;
-  left: 0;
-
+.error {
   font-size: 14px;
   line-height: 19px;
   color: var(--red-2);
+
+  &Name {
+    position: absolute;
+    top: -21px;
+    left: 0;
+  }
+
+  &Comment {
+    position: absolute;
+    top:-20px;
+    right: 100px;
+  }
 }

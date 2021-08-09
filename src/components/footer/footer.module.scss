@@ -3,7 +3,7 @@
 }
 
 .inner {
-  padding: 30px 0 30px 8px;
+  padding: 13px 0 30px 8px;
 }
 
 .item {
@@ -15,5 +15,15 @@
 
   &:last-child {
     margin-right: 0;
+  }
+}
+
+.list {
+  @media(max-width: 930px) {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    padding-right: 14px;
+    grid-template-rows: 40px 40px 40px;
   }
 }

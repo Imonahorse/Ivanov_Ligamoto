@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from './modal.module.scss';
 import ReactStars from 'react-rating-stars-component/dist/react-stars';
 import cn from 'classnames';
@@ -12,47 +12,95 @@ const Stars = {
   COUNT: 5,
 };
 
-const initialState = {
-  id: Math.random().toFixed(4),
-  name: '',
-  benefits: '',
-  flaws: '',
-  total: '',
-  rating: '0',
+const Inputs = {
+  NAME: 'name',
+  RATING: 'rating',
+  GOOD: 'good',
+  BAD: 'bad',
+  COMMENT: 'comment',
 };
 
-function Modal({modalState, handleModalState}) {
-  const [data, setData] = useState(initialState);
+function Modal({handleModalState}) {
+  const nameRef = useRef('');
+  const storage = localStorage.getItem('form');
+  const initState = storage ? JSON.parse(storage) : {
+    [Inputs.NAME]: '',
+    [Inputs.RATING]: '0',
+    [Inputs.GOOD]: '',
+    [Inputs.BAD]: '',
+    [Inputs.COMMENT]: '',
+  };
+
+  const [form, setForm] = useState(initState);
+  const [nameError, setNameError] = useState(false);
+  const [commentError, setCommentError] = useState(false);
   const dispatch = useDispatch();
-  const modalClass = cn(styles.modal, modalState && styles.modalOpen);
-  const innerClass = cn(styles.inner, modalState && styles.innerOpen);
+
+  useEffect(() => {
+    nameRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('form', JSON.stringify(form));
+  }, [form]);
+
+  const handleEscClick = (evt) => {
+    if (evt.key === 'ESC' || evt.key === 'Escape') {
+      handleModalState();
+    }
+  };
+
   const handleInputClick = (evt) => {
     const {name, value} = evt.target;
-    setData({
-      ...data,
+
+    setForm({
+      ...form,
       [name]: value,
     });
   };
+
   const handleRatingClick = (value) => {
-    setData({
-      ...data,
-      rating: value,
+    setForm({
+      ...form,
+      [Inputs.RATING]: value,
     });
   };
+
   const handleSubmitClick = (evt) => {
     evt.preventDefault();
-    dispatch(addReview(data));
-    setData(initialState);
+    const name = form[Inputs.NAME];
+    const comment = form[Inputs.COMMENT];
+
+    if (!name) {
+      setNameError(true);
+      return;
+    }
+
+    if (!comment) {
+      setCommentError(true);
+      return;
+    }
+
+    setNameError(true);
+    setCommentError(true);
+
+
+    dispatch(addReview({
+      ...form,
+      id: Math.random().toFixed(3),
+    }));
     handleModalState();
+    localStorage.clear();
   };
 
   return (
     <section
-      className={modalClass}
+      className={styles.modal}
       onClick={handleModalState}
+      onKeyDown={handleEscClick}
     >
       <div
-        className={innerClass}
+        className={styles.inner}
         onClick={(e) => e.stopPropagation()}
       >
         <div className={styles.header}>
@@ -66,25 +114,33 @@ function Modal({modalState, handleModalState}) {
         </div>
         <form action="#" onSubmit={handleSubmitClick}>
           <div className={styles.form}>
-            <span className={styles.inlay}>Пожалуйста, заполните поле</span>
             <label className={cn(styles.label, styles.labelName)}>
+              {
+                nameError && <span className={cn(styles.error, nameError && styles.errorName)}>Пожалуйста, заполните поле</span>
+              }
               <span className='visually-hidden'>Ваше имя</span>
               <input
-                className={styles.input}
-                name='name'
+                className={cn(styles.input, nameError && styles.inputRequired)}
+                name={Inputs.NAME}
+                ref={nameRef}
                 type="text"
-                value={data.name}
+                value={form[Inputs.NAME]}
                 onChange={handleInputClick}
                 placeholder='Имя'
+                onFocus={() => {
+                  if (nameError) {
+                    setNameError(false);
+                  }
+                }}
               />
             </label>
             <label className={cn(styles.label, styles.labelGood)}>
               <span className='visually-hidden'>Достоинства</span>
               <input
                 className={styles.input}
-                name='benefits'
+                name={Inputs.GOOD}
                 type="text"
-                value={data.benefits}
+                value={form[Inputs.GOOD]}
                 onChange={handleInputClick}
                 placeholder='Достоинства'
               />
@@ -93,10 +149,11 @@ function Modal({modalState, handleModalState}) {
               <span className='visually-hidden'>Недостатки</span>
               <input
                 className={styles.input}
-                name='flaws'
+                name={Inputs.BAD}
                 type="text"
-                value={data.flaws}
+                value={form[Inputs.BAD]}
                 onChange={handleInputClick}
+                placeholder='Недостатки'
               />
             </label>
             <div className={styles.stars}>
@@ -108,24 +165,33 @@ function Modal({modalState, handleModalState}) {
                 isHalf
                 a11y
                 activeColor="#ffd700"
-                name='rating'
-                value={data.rating}
+                name={Inputs.RATING}
+                value={form[Inputs.RATING]}
                 onChange={(value) => handleRatingClick(value)}
               />
             </div>
             <label className={cn(styles.label, styles.labelTextarea)}>
+              {
+                commentError && <span className={cn(styles.error, commentError && styles.errorComment)}>Пожалуйста, заполните поле</span>
+              }
               <span className='visually-hidden'>Комментарий</span>
               <textarea
-                className={styles.textarea}
-                name='total'
+                className={cn(styles.textarea, commentError && styles.textareaRequired)}
+                name={Inputs.COMMENT}
                 cols='20'
                 rows='4'
-                value={data.total}
+                value={form[Inputs.COMMENT]}
                 onChange={handleInputClick}
+                placeholder='Комментарий'
+                onFocus={() => {
+                  if (commentError) {
+                    setCommentError(false);
+                  }
+                }}
               />
             </label>
           </div>
-          <Button className={styles.submit} type='submit'>Оставить отзыв</Button>
+          <Button red className={styles.submit} type='submit'>Оставить отзыв</Button>
         </form>
       </div>
     </section>
@@ -133,7 +199,6 @@ function Modal({modalState, handleModalState}) {
 }
 
 Modal.propTypes = {
-  modalState: PropTypes.bool.isRequired,
   handleModalState: PropTypes.func.isRequired,
 };
 

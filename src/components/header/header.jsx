@@ -18,10 +18,10 @@ function Header() {
     <header className={styles.header}>
       <div className={headerContainer}>
         <nav className={styles.nav}>
-          <div className={styles.logo}>
-            <img src={logo} alt="Логотип"/>
-          </div>
-          <SiteMenu buttons={headerButtons} className={styles.item}/>
+          <a className={styles.logo} href="/#">
+            <img src={logo} alt="Логотип" width='134' height='55'/>
+          </a>
+          <SiteMenu buttons={headerButtons} item={styles.item}/>
         </nav>
       </div>
     </header>

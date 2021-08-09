@@ -3,14 +3,23 @@
 }
 
 .inner {
-  padding: 14px 0 7px 6px;
+  padding: 14px 0 7px 0;
+
+  @media(max-width: 930px) {
+    padding: 10px 0 5px 0;
+  }
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   color: var(--default-color);
+  align-items: center;
+  padding-right: 40px;
+
+  @media(max-width: 930px) {
+    padding-right: 0;
+  }
 }
 
 .item {
@@ -22,6 +31,15 @@
 }
 
 .logo {
-  padding-right: 50px;
+  display: block;
+  padding: 0 50px 0 8px;
+  width: 250px;
+  height: 62px;
+  flex-shrink: 1;
+
+  @media(max-width: 930px) {
+    width: 220px;
+    padding: 0 15px 0 10px;
+  }
 }
 

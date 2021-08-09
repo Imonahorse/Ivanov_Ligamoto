@@ -3,6 +3,10 @@
   grid-template-columns: 348px auto;
   grid-auto-flow: column;
   padding: 25px 0 140px 0;
+
+  @media(max-width: 930px) {
+    grid-template-columns: 276px auto;
+  }
 }
 
 .list {

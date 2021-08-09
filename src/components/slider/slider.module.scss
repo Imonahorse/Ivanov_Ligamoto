@@ -1,11 +1,12 @@
 .promo {
   position: relative;
+  background-color: var(--default-color);
 
   img {
     width: 100%;
   }
 
-  @media(max-width: 940px) {
+  @media(max-width: 930px) {
     width: 726px;
   }
 }
@@ -29,24 +30,45 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+
+  &Left {
+    @media(max-width: 930px) {
+      margin-right: 31px;
+    }
+  }
+
+  &Right {
+    @media(max-width: 930px) {
+      margin-left: 31px;
+    }
+  }
 }
 
 .img {
   width: 128px;
   height: 80px;
+  margin-right: 25px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .slider {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   padding-top: 40px;
 
-  @media(max-width: 940px) {
-    padding-left: 64px;
-    padding-right: 64px;
+  @media(max-width: 930px) {
     flex-wrap: wrap;
-    padding-bottom: 60px;
   }
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }

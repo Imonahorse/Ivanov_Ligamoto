@@ -14,7 +14,7 @@ function Article() {
         <div className={styles.left}>
           <Slider/>
         </div>
-        <div>
+        <div className={styles.right}>
           <h3 className={styles.title}>Марпех 11</h3>
           <ul className={styles.features}>
             <li className={`${styles.itemEngine} ${styles.item}`}>бензин</li>

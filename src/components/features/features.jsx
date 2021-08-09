@@ -13,17 +13,19 @@ const features = {
 
 function Features() {
   return (
-    <dl className={styles.list}>
+    <div>
       <h3 className='visually-hidden'>Характеристики автомобиля</h3>
-      {
-        Object.entries(features).map(([dt, dd]) => (
-          <div className={styles.item} key={dt}>
-            <dt>{dt}</dt>
-            <dd className={styles.description}>{dd}</dd>
-          </div>
-        ))
-      }
-    </dl>
+      <dl className={styles.list}>
+        {
+          Object.entries(features).map(([dt, dd]) => (
+            <div className={styles.item} key={dt}>
+              <dt>{dt}</dt>
+              <dd className={styles.description}>{dd}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
   );
 }
 
