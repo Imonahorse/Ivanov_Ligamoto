@@ -1,0 +1,22 @@
+.wrapper {
+  position: relative;
+  padding: 10px 0 144px 0;
+
+  @media(max-width: 930px) {
+    padding-bottom: 55px;
+  }
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  z-index: 10;
+  position: absolute;
+  top: 30px;
+  right: 42px;
+  padding: 16px 18px;
+}

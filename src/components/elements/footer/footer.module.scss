@@ -1,0 +1,36 @@
+.footer {
+  background-color: var(--gray);
+}
+
+.inner {
+  padding: 13px 40px 30px 8px;
+
+  @media(max-width: 930px) {
+    padding-right: 0;
+  }
+}
+
+.item {
+  margin-right: 67px;
+
+  &:nth-last-child(2) {
+    margin-right: 61px;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+
+  @media(max-width: 930px) {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    padding-right: 14px;
+    grid-template-rows: 40px 40px 40px;
+  }
+}

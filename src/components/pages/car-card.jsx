@@ -1,8 +1,8 @@
 import React from 'react';
-import Header from './../header/header';
-import Article from './../article/article';
-import Tabs from './../tabs/tabs';
-import Footer from '../footer/footer';
+import Header from '../elements/header/header';
+import Article from '../elements/article/article';
+import Tabs from '../elements/tabs/tabs';
+import Footer from '../elements/footer/footer';
 import styles from './car-card.module.scss';
 
 
