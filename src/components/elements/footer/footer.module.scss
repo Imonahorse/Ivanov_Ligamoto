@@ -3,10 +3,11 @@
 }
 
 .inner {
-  padding: 13px 40px 30px 8px;
+  padding: 13px 0 30px 0;
+  margin-right: -10px;
 
   @media(max-width: 930px) {
-    padding-right: 0;
+    margin-right: 0;
   }
 }
 

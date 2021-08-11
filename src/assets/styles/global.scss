@@ -29,16 +29,13 @@ a {
 }
 
 .container {
-  max-width: 1215px;
+  max-width: 1190px;
   margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
 
   @media(max-width: 930px) {
     padding-left: 20px;
     padding-right: 20px;
-  }
-
-  @media(max-width: 1214px) {
-    padding-left: 10px;
-    padding-right: 10px;
   }
 }
