@@ -18,9 +18,7 @@ function Header() {
     <header className={styles.header}>
       <div className={headerContainer}>
         <nav className={styles.nav}>
-          <a className={styles.logo}>
-            <img src={logo} alt="Логотип" width='134' height='55'/>
-          </a>
+          <img src={logo} className={styles.logo} alt="Логотип" width='134' height='55'/>
           <SiteMenu buttons={headerButtons} item={styles.item}/>
         </nav>
       </div>
