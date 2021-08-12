@@ -12,7 +12,7 @@ function SiteMenu({buttons, item, list=''}) {
       {
         buttons.map((button) => (
           <li className={liClass} key={button}>
-            <a href="/#">{button}</a>
+            <a className={styles.link} href="/#">{button}</a>
           </li>
         ))
       }

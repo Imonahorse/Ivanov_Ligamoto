@@ -10,7 +10,7 @@ import Button from '../button/button';
 const MIN_LENGTH = 1;
 
 const Stars = {
-  SIZE: 28,
+  SIZE: 35,
   COUNT: 5,
 };
 
