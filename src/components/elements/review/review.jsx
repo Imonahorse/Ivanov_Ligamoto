@@ -11,18 +11,18 @@ function Review({review}) {
   const {id, name, good, bad, comment, rating} = review;
   return (
     <li className={styles.inner}>
-      <p className={styles.user} id={id}>{name}</p>
+      <h3 className={styles.user} id={id}>{name}</h3>
       <div className={cn(styles.opinion, styles.opinion_good)}>
-        <span className={styles.label}>Достоинства</span>
-        <span>{good}</span>
+        <p className={styles.title}>Достоинства</p>
+        <p className={styles.text}>{good}</p>
       </div>
       <div className={cn(styles.opinion, styles.opinion_bad)}>
-        <span className={styles.label}>Недостатки</span>
-        <span>{bad}</span>
+        <p className={styles.title}>Недостатки</p>
+        <p className={styles.text}>{bad}</p>
       </div>
       <div className={cn(styles.opinion, styles.opinion_text)}>
-        <span className={styles.label}>Комментарий</span>
-        <span>{comment}</span>
+        <p className={styles.title}>Комментарий</p>
+        <p className={styles.text}>{comment}</p>
       </div>
       <div className={styles.rating}>
         <ReactStars

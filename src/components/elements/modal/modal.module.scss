@@ -167,7 +167,8 @@
 .stars {
   display: flex;
   flex-direction: row;
-  padding-top: 11px;
+  align-items: center;
+  padding-bottom: 10px;
 }
 
 .rating {
@@ -182,6 +183,7 @@
 .constellation {
   width: 170px;
   display: flex;
+  line-height: 40px;
   justify-content: space-between;
 }
 

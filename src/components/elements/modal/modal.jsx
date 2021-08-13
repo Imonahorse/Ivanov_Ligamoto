@@ -8,8 +8,6 @@ import addReview from '../../../store/actions';
 import Button from '../button/button';
 import ReactModal from 'react-modal';
 
-// const YES = true;
-
 const MIN_LENGTH = 1;
 
 const Stars = {
