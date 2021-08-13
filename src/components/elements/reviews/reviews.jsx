@@ -14,7 +14,7 @@ function Reviews() {
 
   return (
     <div className={styles.wrapper}>
-      <h3 className='visually-hidden'>Комментарии</h3>
+      <h4 className='visually-hidden'>Комментарии</h4>
       <Button
         white
         type='button'
