@@ -28,7 +28,7 @@ function Reviews() {
           reviews.map((review) => <Review review={review} key={review.id}/>)
         }
       </ul>
-      {modalState && <Modal handleModalState={handleModalState}/>}
+      {modalState && <Modal modalState={modalState} handleModalState={handleModalState}/>}
     </div>
   );
 }

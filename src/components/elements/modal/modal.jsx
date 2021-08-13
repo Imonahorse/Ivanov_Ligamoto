@@ -6,6 +6,9 @@ import PropTypes from 'prop-types';
 import {useDispatch} from 'react-redux';
 import addReview from '../../../store/actions';
 import Button from '../button/button';
+import ReactModal from 'react-modal';
+
+// const YES = true;
 
 const MIN_LENGTH = 1;
 
@@ -22,7 +25,7 @@ const Inputs = {
   COMMENT: 'comment',
 };
 
-function Modal({handleModalState}) {
+function Modal({modalState, handleModalState}) {
   const nameRef = useRef('');
   const storage = localStorage.getItem('form');
   const initState = storage ? JSON.parse(storage) : {
@@ -39,24 +42,8 @@ function Modal({handleModalState}) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    nameRef.current.focus();
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem('form', JSON.stringify(form));
   }, [form]);
-
-  useEffect(() => {
-    document.body.classList.add(styles.open);
-
-    return (() => document.body.classList.remove(styles.open));
-  }, []);
-
-  const handleEscClick = (evt) => {
-    if (evt.key === 'ESC' || evt.key === 'Escape') {
-      handleModalState();
-    }
-  };
 
   const handleInputClick = (evt) => {
     const {name, value} = evt.target;
@@ -103,112 +90,122 @@ function Modal({handleModalState}) {
     localStorage.clear();
   };
 
+  const handleAfterOpen = () => {
+    nameRef.current.focus();
+    document.body.classList.add(styles.open);
+  };
+
+  const handleAfterClose = () => {
+    document.body.classList.remove(styles.open);
+  };
+
   return (
-    <section
-      className={styles.modal}
-      onClick={handleModalState}
-      onKeyDown={handleEscClick}
+    <ReactModal
+      isOpen={modalState}
+      contentLabel={'Форма отзыва'}
+      overlayClassName={styles.modal}
+      className={styles.inner}
+      onRequestClose={handleModalState}
+      onAfterOpen={handleAfterOpen}
+      onAfterClose={handleAfterClose}
     >
-      <div
-        className={styles.inner}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className={styles.header}>
-          <h2 className={styles.title}>Оставить отзыв</h2>
-          <button
-            className={styles.close}
-            type='button'
-            onClick={handleModalState}
-          >
-          </button>
-        </div>
-        <form action="#" onSubmit={handleSubmitClick}>
-          <div className={styles.form}>
-            <label className={cn(styles.label, styles.label_name)}>
-              {
-                nameError && <span className={cn(styles.error, nameError && styles.error_name)}>Пожалуйста, заполните поле</span>
-              }
-              <span className='visually-hidden'>Ваше имя</span>
-              <input
-                className={cn(styles.input, nameError && styles.input_required)}
-                name={Inputs.NAME}
-                ref={nameRef}
-                type="text"
-                value={form[Inputs.NAME]}
-                onChange={handleInputClick}
-                placeholder='Имя'
-                onFocus={() => {
-                  if (nameError) {
-                    setNameError(false);
-                  }
-                }}
-              />
-            </label>
-            <label className={cn(styles.label, styles.label_good)}>
-              <span className='visually-hidden'>Достоинства</span>
-              <input
-                className={styles.input}
-                name={Inputs.GOOD}
-                type="text"
-                value={form[Inputs.GOOD]}
-                onChange={handleInputClick}
-                placeholder='Достоинства'
-              />
-            </label>
-            <label className={cn(styles.label, styles.label_bad)}>
-              <span className='visually-hidden'>Недостатки</span>
-              <input
-                className={styles.input}
-                name={Inputs.BAD}
-                type="text"
-                value={form[Inputs.BAD]}
-                onChange={handleInputClick}
-                placeholder='Недостатки'
-              />
-            </label>
-            <div className={styles.stars}>
-              <p className={styles.rating}>Оцените товар:</p>
-              <ReactStars
-                classNames={styles.constellation}
-                count={Stars.COUNT}
-                size={Stars.SIZE}
-                isHalf
-                a11y
-                activeColor='#D12136'
-                name={Inputs.RATING}
-                value={form[Inputs.RATING]}
-                onChange={(value) => handleRatingClick(value)}
-              />
-            </div>
-            <label className={cn(styles.label, styles.label_textarea)}>
-              {
-                commentError && <span className={cn(styles.error, commentError && styles.error_comment)}>Пожалуйста, заполните поле</span>
-              }
-              <span className='visually-hidden'>Комментарий</span>
-              <textarea
-                className={cn(styles.textarea, commentError && styles.textarea_required)}
-                name={Inputs.COMMENT}
-                cols='20'
-                rows='4'
-                value={form[Inputs.COMMENT]}
-                onChange={handleInputClick}
-                placeholder='Комментарий'
-                onFocus={() => {
-                  if (commentError) {
-                    setCommentError(false);
-                  }
-                }}
-              />
-            </label>
-          </div>
-          <Button red className={styles.submit} type='submit'>Оставить отзыв</Button>
-        </form>
+      <div className={styles.header}>
+        <h2 className={styles.title}>Оставить отзыв</h2>
+        <button
+          className={styles.close}
+          type='button'
+          onClick={handleModalState}
+        >
+          <span className='visually-hidden'>Закрыть модальное окно</span>
+        </button>
       </div>
-    </section>
+      <form action="#" onSubmit={handleSubmitClick}>
+        <div className={styles.form}>
+          <label className={cn(styles.label, styles.label_name)}>
+            {
+              nameError && <span className={cn(styles.error, nameError && styles.error_name)}>Пожалуйста, заполните поле</span>
+            }
+            <span className='visually-hidden'>Ваше имя</span>
+            <input
+              className={cn(styles.input, nameError && styles.input_required)}
+              name={Inputs.NAME}
+              ref={nameRef}
+              type="text"
+              value={form[Inputs.NAME]}
+              onChange={handleInputClick}
+              placeholder='Имя'
+              onFocus={() => {
+                if (nameError) {
+                  setNameError(false);
+                }
+              }}
+            />
+          </label>
+          <label className={cn(styles.label, styles.label_good)}>
+            <span className='visually-hidden'>Достоинства</span>
+            <input
+              className={styles.input}
+              name={Inputs.GOOD}
+              type="text"
+              value={form[Inputs.GOOD]}
+              onChange={handleInputClick}
+              placeholder='Достоинства'
+            />
+          </label>
+          <label className={cn(styles.label, styles.label_bad)}>
+            <span className='visually-hidden'>Недостатки</span>
+            <input
+              className={styles.input}
+              name={Inputs.BAD}
+              type="text"
+              value={form[Inputs.BAD]}
+              onChange={handleInputClick}
+              placeholder='Недостатки'
+            />
+          </label>
+          <div className={styles.stars}>
+            <p className={styles.rating}>Оцените товар:</p>
+            <ReactStars
+              classNames={styles.constellation}
+              count={Stars.COUNT}
+              size={Stars.SIZE}
+              isHalf
+              a11y
+              activeColor='#D12136'
+              name={Inputs.RATING}
+              value={form[Inputs.RATING]}
+              onChange={(value) => handleRatingClick(value)}
+            />
+          </div>
+          <label className={cn(styles.label, styles.label_textarea)}>
+            {
+              commentError && <span className={cn(styles.error, commentError && styles.error_comment)}>Пожалуйста, заполните поле</span>
+            }
+            <span className='visually-hidden'>Комментарий</span>
+            <textarea
+              className={cn(styles.textarea, commentError && styles.textarea_required)}
+              name={Inputs.COMMENT}
+              cols='20'
+              rows='4'
+              value={form[Inputs.COMMENT]}
+              onChange={handleInputClick}
+              placeholder='Комментарий'
+              onFocus={() => {
+                if (commentError) {
+                  setCommentError(false);
+                }
+              }}
+            />
+          </label>
+        </div>
+        <Button red className={styles.submit} type='submit'>Оставить отзыв</Button>
+      </form>
+    </ReactModal>
   );
 }
 
 Modal.propTypes = {
+  modalState: PropTypes.bool.isRequired,
   handleModalState: PropTypes.func.isRequired,
 };
 
